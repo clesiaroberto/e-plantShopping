@@ -42,11 +42,15 @@ body {
 /* Product Grid */
 .product-grid {
     display:flex;
-    flex-direction: column;
+    flex-wrap: wrap;;
+    flex-direction: row;
     width: 100vw;
     align-items: center;
     justify-content: center;
+    gap:20px;
 }
+
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -61,8 +65,8 @@ body {
 
 /* Product Card */
 .product-card {
-    flex: 0 0 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap */
-    max-width: calc(26.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap */
+    flex: 0 0 calc(30.33% - 20px); /* Adjust width for 3 cards per row with 20px gap */
+    max-width: calc(30.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap */
     margin-bottom: 20px;
     padding: 20px;
     background-color: #fff;
@@ -71,7 +75,6 @@ body {
     text-align: center;
     position: relative;
     
-    gap: 20px;
 }
 
 /* Pseudo-classes - Hover effect on product button */
@@ -157,7 +160,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 650px;
+    width: 700px;
     font-size: 19px;
 }
 .cart{
@@ -173,18 +176,18 @@ body {
 
 }
 .plantname_heading{
-   display: flex;
-   align-items: center;
-   justify-content: center;
+   text-align: center;
     /* background-color: yellow; */
 }
 .plant_heading{
-    width: 400px;
-    text-align: center;
-    margin: 20px;
-    border: 1px solid rgb(5, 4, 4);
-    border-left: none;
-    border-right: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: 20px auto; /* auto centers horizontally */
+  border: 1px solid rgb(5, 4, 4);
+  border-left: none;
+  border-right: none;
 
     
 }
