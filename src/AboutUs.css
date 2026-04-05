@@ -1,9 +1,13 @@
 .about-us-container {
-    width: 1000px;
-    /* margin: 0 auto; */
+    width: 900px;
+    margin: 0 auto;
     /* padding: 20px; */
     /* background-color: red; */
-    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+      margin-right: 100px;
   }
   
   .about-us-heading {
@@ -18,11 +22,13 @@
     color: #666;
     margin-bottom: 30px;
     text-align: center;
+    margin-right: 115px;
   }
   
   .about-us-content {
     font-size: 18px;
     margin-bottom: 20px;
+    margin-right: 100px;
   }
   .plant_logo_right{
     text-align: right;

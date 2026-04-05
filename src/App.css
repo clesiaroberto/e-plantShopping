@@ -58,12 +58,14 @@
 }
 
 .content h1 {
-  font-size: 48px;
+  font-size: 30px;
   margin-bottom: 10px;
+  margin-left: 80px;
 }
 
 .content p {
-  font-size: 25px;
+  font-size: 18px;
+  margin-left: 80px;
 }
 
 .divider {
@@ -71,18 +73,21 @@
   height: 2px;
   background-color: #4caf50;
   margin: 10px 0;
+  margin-left: 80px;
 }
 
 .get-started-button {
-  padding: 15px 25px;
-  font-size: 23px;
+  padding: 10px 20px;
+  font-size: 15px;
   border: none;
   border-radius: 5px;
   background-color: #4caf50;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 40px;
+  margin-top: 20px;
+   margin-left: 80px;
+
 }
 
 .get-started-button:hover {
@@ -130,8 +135,9 @@
   }
 
   .aboutus_container {
-    margin-top: 20px; /* Adjust as needed */
+    margin-top: 100px; /* Adjust as needed */
     width: 80%; /* Adjust as needed */
+    background-color: pink;
   }
 }
 
