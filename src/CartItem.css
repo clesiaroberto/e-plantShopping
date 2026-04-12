@@ -230,8 +230,9 @@
   }
 
   .get-started-button1 {
-    padding: 15px 75px;
-    font-size: 23px;
+    padding: 10px 15px;
+    font-size: 18px;
+    width: 190px;
     border: none;
     border-radius: 5px;
     background-color: #4caf50;
@@ -240,4 +241,5 @@
     transition: background-color 0.3s ease;
     margin-top: 40px;
   }
+  
   

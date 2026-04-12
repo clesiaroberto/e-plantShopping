@@ -135,9 +135,8 @@
   }
 
   .aboutus_container {
-    margin-top: 100px; /* Adjust as needed */
+    margin-top: 20px; /* Adjust as needed */
     width: 80%; /* Adjust as needed */
-    background-color: pink;
   }
 }
 
