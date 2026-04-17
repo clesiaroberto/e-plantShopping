@@ -21,8 +21,12 @@ export const CartSlice = createSlice({
     removeItem: (state, action) => {
       const index = state.items.findIndex(i => i.name === action.payload.name)
       
+    
       if(index !== -1){
+        const itemQuantity = state.items[index].quantity;
+        state.cartItems -= itemQuantity;
         state.items.splice(index, 1);
+        
       }
 
     },
@@ -32,8 +36,10 @@ export const CartSlice = createSlice({
       const cartItem = state.items.find(i => i.name === name);
       if (cartItem) {
       cartItem.quantity += 1;
+      state.cartItems +=1;
       
       }
+      
 
     
     },
@@ -42,11 +48,14 @@ export const CartSlice = createSlice({
       const cartItem = state.items.find(i => i.name === name);
       if (cartItem) {
       cartItem.quantity -= 1;
+      state.cartItems -=1;
       }
 
     },
     cartItemsIncrement:(state, action) => { //change the quantity in the cartItem
-          state.cartItems += 1;
+
+       state.cartItems +=1
+
     }
   },
 });

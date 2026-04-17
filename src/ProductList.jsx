@@ -274,7 +274,7 @@ function ProductList({ onHomeClick }) {
         event.target.disabled = true;
 
         //use dispatch to change the state for cartItems
-        dispatch(cartItemsIncrement());
+        dispatch(cartItemsIncrement({name: plant.name}));
         
         //dispatch to get payload to addItem
     
