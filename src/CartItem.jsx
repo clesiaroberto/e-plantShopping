@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateQuantity } from './CartSlice';
+import { removeItem, updateQuantity, decrementQuantity } from './CartSlice';
 import './CartItem.css';
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
+
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
@@ -19,13 +20,16 @@ const CartItem = ({ onContinueShopping }) => {
 
 
   const handleIncrement = (item) => {
+    dispatch(updateQuantity({ name: item.name }));
   };
 
   const handleDecrement = (item) => {
-   
+   dispatch(decrementQuantity({ name: item.name }));
   };
 
   const handleRemove = (item) => {
+     dispatch(removeItem({ name: item.name }));
+    
   };
 
   // Calculate total cost based on quantity for an item

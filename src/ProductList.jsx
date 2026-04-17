@@ -1,9 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect} from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
+import { useSelector, useDispatch } from 'react-redux';
+import {cartItemsIncrement, addItem} from './CartSlice';
 
 
 function ProductList({ onHomeClick }) {
+    const cartItems = useSelector((state) => state.cart.cartItems);
+    const dispatch = useDispatch();
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
 
@@ -264,14 +268,23 @@ function ProductList({ onHomeClick }) {
         setShowCart(false);
     };
 
-    const [cartItems, setCartItems] = useState(0);
-    const handleButtonClick = (event) =>{
+    const handleButtonClick = (plant, event) =>{
         event.target.style.backgroundColor = "grey";
         event.target.innerText = "Added to Cart";
-        event.target.disabled = "true";
+        event.target.disabled = true;
 
-         setCartItems(cartItems+1)
-
+        //use dispatch to change the state for cartItems
+        dispatch(cartItemsIncrement());
+        
+        //dispatch to get payload to addItem
+    
+        dispatch(addItem({
+        name: plant.name,
+        cost: plant.cost,
+        image: plant.image,
+        
+         }));
+    
     }
 
 
@@ -323,7 +336,7 @@ function ProductList({ onHomeClick }) {
                                 <img className='product-image' src={plant.image}/>
                                 <div className='product-price'>{plant.cost}</div>
                                 <div className='product-list'>{plant.description}</div>
-                                <button className='product-button' onClick={handleButtonClick}>Add to Cart</button>
+                                <button className='product-button' onClick={(event) => handleButtonClick(plant, event)}>Add to Cart</button>
                             </div>
                             
                         ))}
