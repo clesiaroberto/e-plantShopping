@@ -7,6 +7,8 @@ import {cartItemsIncrement, addItem} from './CartSlice';
 
 function ProductList({ onHomeClick }) {
     const cartItems = useSelector((state) => state.cart.cartItems);
+    const cart = useSelector(state => state.cart);
+
     const dispatch = useDispatch();
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
@@ -268,10 +270,10 @@ function ProductList({ onHomeClick }) {
         setShowCart(false);
     };
 
-    const handleButtonClick = (plant, event) =>{
-        event.target.style.backgroundColor = "grey";
-        event.target.innerText = "Added to Cart";
-        event.target.disabled = true;
+    const [buttonStates, setButtonStates] = useState({});
+
+    const handleButtonClick = (plant) =>{
+        
 
         //use dispatch to change the state for cartItems
         dispatch(cartItemsIncrement({name: plant.name}));
@@ -285,6 +287,11 @@ function ProductList({ onHomeClick }) {
         
          }));
     
+    }
+
+    const reEnableButtons = (event) =>{
+
+
     }
 
 
@@ -329,18 +336,33 @@ function ProductList({ onHomeClick }) {
                     </div>
                      <div className="product-grid" >
                         
-                        {product.plants.map((plant, index) => (
-                            
-                                <div className='product-card' key={index}>
-                                <div className='product-title'>{plant.name}</div>
-                                <img className='product-image' src={plant.image}/>
-                                <div className='product-price'>{plant.cost}</div>
-                                <div className='product-list'>{plant.description}</div>
-                                <button className='product-button' onClick={(event) => handleButtonClick(plant, event)}>Add to Cart</button>
+                        {product.plants.map((plant, index) => {
+                        // ✅ put your logic here
+                        const item = cart.items.find(i => i.name === plant.name);
+                        const btnColor = item?.btnColor || "#4CAF50";
+                        const btnTxt = item?.btnText || "Add to Cart";
+                        const btnSts = item?.btnStatus || false;
+
+                        // ✅ explicit return of JSX
+                        return (
+                            <div className='product-card' key={index}>
+                            <div className='product-title'>{plant.name}</div>
+                            <img className='product-image' src={plant.image} />
+                            <div className='product-price'>{plant.cost}</div>
+                            <div className='product-list'>{plant.description}</div>
+                            <button
+                                className='product-button'
+                                key={plant.name}
+                                onClick={() => handleButtonClick(plant)}
+                                style={{ backgroundColor: btnColor }}
+                                disabled={btnSts}
+                            >
+                                {btnTxt}
+                            </button>
                             </div>
-                            
-                        ))}
-                        
+                        );
+                        })}
+                                                
 
                 </div>
                 </div>

@@ -6,7 +6,7 @@ export const CartSlice = createSlice({
     items: [
     ], // Initialize items as an empty array
     cartItems: 0,
-    totalCost:0
+    totalCost:0,
   },
   reducers: {
     addItem: (state, action) => {
@@ -20,14 +20,26 @@ export const CartSlice = createSlice({
     cost: newItem.cost,
     image: newItem.image,
     quantity: 1,
-    totalPrice: parseInt(strPrice.replace("$", ""), 10)
+    totalPrice: parseInt(strPrice.replace("$", ""), 10),
+    btnStatus: true,
+    btnText: "Added to cart",
+    btnColor: "grey"
   });
 
       state. totalCost =  state.items.reduce((sum, item) => {
       return sum + (item.totalPrice || 0);
       }, 0);
-       console.log(state.totalCost)
+       
   },
+  /*updateButtonState: (state, action) => {
+  const { name, btnColor, btnTxt, btnSts } = action.payload;
+  const item = state.items.find(i => i.name === name);
+  if (item) {
+    item.btnColor = btnColor;
+    item.btnText = btnTxt;
+    item.btnStatus = btnSts;
+  }
+},*/
     removeItem: (state, action) => {
       const index = state.items.findIndex(i => i.name === action.payload.name)
       
@@ -40,8 +52,6 @@ export const CartSlice = createSlice({
         state. totalCost =  state.items.reduce((sum, item) => {
       return sum + (item.totalPrice || 0);
       }, 0);
-
-       console.log(state.totalCost)
 
     },
 
@@ -68,7 +78,9 @@ export const CartSlice = createSlice({
       return sum + (item.totalPrice || 0);
       }, 0);
 
-       console.log(state.totalCost)
+       if(cartItem.totalPrice <=0){
+        ///
+       }
 
     },
     updateTotalPrice:(state, action) =>{
@@ -93,10 +105,14 @@ export const CartSlice = createSlice({
 
        state.cartItems +=1
 
+    },
+    reEnableBtn: (state, action) =>{
+
     }
   },
 });
 
-export const { addItem, removeItem, updateQuantity, decrementQuantity, cartItemsIncrement, updateTotalPrice, updateTotalAmount} = CartSlice.actions;
+export const { addItem, removeItem, updateQuantity, decrementQuantity, 
+  cartItemsIncrement, updateTotalPrice, updateTotalAmount, updateButtonState} = CartSlice.actions;
 
 export default CartSlice.reducer;
