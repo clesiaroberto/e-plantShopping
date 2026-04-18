@@ -266,7 +266,8 @@ function ProductList({ onHomeClick }) {
     };
 
     const handleContinueShopping = (e) => {
-        e.preventDefault();
+         e.preventDefault();
+        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
         setShowCart(false);
     };
 
